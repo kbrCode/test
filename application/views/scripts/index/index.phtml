@@ -49,4 +49,34 @@ echo "administrator view ", $this->acl->isAllowed('administrator', null, 'update
 "allowed" : "denied";
 // allowed because administrator is allowed all privileges
 
+echo "<br> Database: <BR>";
+
+try
+{
+	$dbAdapter = Zend_Db_Table::getDefaultAdapter();
+} 
+catch (Zend_Db_Adapter_Exception $e) {
+	// perhaps a failed login credential, or perhaps the RDBMS is not running
+	echo 'Zend_Db_Table::getDefaultAdapter failed', ' ', $e->__toString();
+} 
+catch (Zend_Exception $e) {
+	// perhaps factory() failed to load the specified Adapter class
+	echo $e->__toString();	
+}
+
+$authAdapter = new Zend_Auth_Adapter_DbTable($dbAdapter);
+//$sql = $dbAdapter->getDbSelect();
+
+$select = $dbAdapter->select()->from('test');
+
+$sql = $dbAdapter->query($select);
+
+$result = $sql->fetchAll();
+
+// $stmt = $select->query($select);
+
+// // $result is an array of objects
+ var_dump($result)
+
+
 ?>
