@@ -1,0 +1,52 @@
+sdfgsdfgsdfgsdf<br>
+<?=$this->zmienna;
+
+echo "<br>";
+
+echo "guest view ", $this->acl->isAllowed('guest', null, 'view') ?
+"allowed" : "denied";
+// allowed
+
+echo "<br>";
+
+echo 'staff publish ', $this->acl->isAllowed('staff', null, 'publish') ?
+"allowed" : "denied";
+// denied
+
+echo "<br>";
+
+echo "staff revise ", $this->acl->isAllowed('staff', null, 'revise') ?
+"allowed" : "denied";
+// allowed
+
+echo "<br>";
+
+echo "editor view ", $this->acl->isAllowed('editor', null, 'view') ?
+"allowed" : "denied";
+// allowed because of inheritance from guest
+
+echo "<br>";
+
+echo "editor update ", $this->acl->isAllowed('editor', null, 'update') ?
+"allowed" : "denied";
+// denied because no allow rule for 'update'
+
+echo "<br>";
+
+echo "administrator view ", $this->acl->isAllowed('administrator', null, 'view') ?
+"allowed" : "denied";
+// allowed because administrator is allowed all privileges
+
+echo "<br>";
+
+echo "administrator ", $this->acl->isAllowed('administrator') ?
+"allowed" : "denied";
+// allowed because administrator is allowed all privileges
+
+echo "<br>";
+
+echo "administrator view ", $this->acl->isAllowed('administrator', null, 'update') ?
+"allowed" : "denied";
+// allowed because administrator is allowed all privileges
+
+?>

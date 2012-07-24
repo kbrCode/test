@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<aplikacja>
+	<production>
+		<errors>
+			<display>off</display>
+		</errors>
+		<cache>tak</cache>
+		<url>
+			<pre>/</pre>
+			<ext>.html</ext>
+		</url>
+		<baza>
+            <adapter>PDO_MYSQL</adapter>
+            <host>78.47.169.93</host>
+            <username>admin_dzp</username>
+            <password>kupa123</password>
+            <dbname>admin_dzp</dbname>
+			<dbtableprefix>fx_</dbtableprefix>
+		</baza>
+		<smtp>
+			<serwer></serwer>
+			<login></login>
+			<from>
+				<email></email>
+				<name></name>
+			</from>
+			<replyto>
+				<email></email>
+				<name></name>
+			</replyto>
+			<haslo></haslo>
+		</smtp>
+		<capcha>
+			<reCaptcha>
+				<publicKey>6Lcn8sUSAAAAAOA9ZsUbWN6FaGSY82UjMRJK4Sb5</publicKey>
+				<privateKey>6Lcn8sUSAAAAAAuqrvA5ja_weAmzQ_AQgfY2deg8</privateKey>
+			</reCaptcha>
+		</capcha>
+		<haslo>
+			<blednaLiczba>3</blednaLiczba>
+		</haslo>
+		<news>
+			<ileHome>3</ileHome>
+		</news>
+		<euro>
+			<kurs>4.2</kurs>
+		</euro>
+	</production>
+    <staging extends="production">
+    </staging>
+    <testing extends="production">
+    </testing>
+    <development extends="production">
+    </development>
+</aplikacja>

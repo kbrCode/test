@@ -1,0 +1,13 @@
+SetEnv APPLICATION_ENV development
+
+#Redirect /cat/strona-glowna.html http://localhost/cotukupic/strona-glowna.html
+
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} -s [OR]
+RewriteCond %{REQUEST_FILENAME} -l [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+
+#RewriteRule ^/cat/strona-glowna.html / [NC,L,R=301]
+RewriteRule ^.*$ - [NC,L]
+RewriteRule ^.*$ index.php [NC,L]
