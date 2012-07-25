@@ -65,6 +65,7 @@ catch (Zend_Exception $e) {
 }
 
 $authAdapter = new Zend_Auth_Adapter_DbTable($dbAdapter);
+
 //$sql = $dbAdapter->getDbSelect();
 
 $select = $dbAdapter->select()->from('test');
@@ -76,7 +77,40 @@ $result = $sql->fetchAll();
 // $stmt = $select->query($select);
 
 // // $result is an array of objects
- var_dump($result)
-
+ var_dump($result);
+ 
+ $defaultNamespace = new Zend_Session_Namespace('Default');
+ 
+ if (isset($defaultNamespace->numberOfPageRequests)) {
+ 	// this will increment for each page load.
+ 	$defaultNamespace->numberOfPageRequests++;
+ } else {
+ 	$defaultNamespace->numberOfPageRequests = 1; // first time
+ }
+ 
+ echo "Page requests this session: ".$defaultNamespace->numberOfPageRequests."<br>";
+ 
+ print_r($defaultNamespace);
+ 
+  
+ 
+//  //This is in your bootstrap, note you can also use Zend_Config in the constructor
+//  $config = array(
+//  		'name'           => 'sessions',      //table name as per Zend_Db_Table
+//  		'primary'        => 'Session_ID',   //the sessionID given by php
+//  		'modifiedColumn' => 'modified',     //time the session should expire
+//  		'dataColumn'     => 'Session_data', //serialized data
+//  		'lifetimeColumn' => 'lifetime'      //end of life for a specific record
+//  );
+//  $saveHandler = new Zend_Session_SaveHandler_DbTable($config);
+//  //cookie persist for 30 days
+//  Zend_Session::rememberMe($seconds = (60 * 60 * 24 * 30));
+ 
+//  //make the session persist for 30 days
+//  $saveHandler->setLifetime($seconds)->setOverrideLifetime(true);
+//  //similarly,
+//  //$saveHandler->setLifetime($seconds, true);
+//  Zend_Session::setSaveHandler($saveHandler);
+//  Zend_Session::start();
 
 ?>
