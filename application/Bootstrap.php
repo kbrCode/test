@@ -87,15 +87,35 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 
 	protected function _initConfig(){
 		// Retrieve configuration from file
-        $config = new Zend_Config_Xml(APPLICATION_PATH . '/configs/config.xml', APPLICATION_ENV);
+//         $config = new Zend_Config_Xml(APPLICATION_PATH . '/configs/config.xml', APPLICATION_ENV);
 
-        // Add config to the registry so it is available sitewide
-        $registry = Zend_Registry::getInstance();
-        $registry->set('config', $config);
-        // Return it, so that it can be stored by the bootstrap
-        return $config;
+//         // Add config to the registry so it is available sitewide
+//         $registry = Zend_Registry::getInstance();
+//         $registry->set('config', $config);
+//         // Return it, so that it can be stored by the bootstrap
+//         return $config;
+		//This is in your bootstrap, note you can also use Zend_Config in the constructor
+		$config = array(
+				'name'           => 'sessions',      //table name as per Zend_Db_Table
+				'primary'        => 'Session_ID',   //the sessionID given by php
+				'modifiedColumn' => 'modified',     //time the session should expire
+				'dataColumn'     => 'Session_data', //serialized data
+				'lifetimeColumn' => 'lifetime'      //end of life for a specific record
+		);
+		$saveHandler = new Zend_Session_SaveHandler_DbTable($config);
+		//cookie persist for 30 days
+		Zend_Session::rememberMe($seconds = (60 * 60 * 24 * 30));
+		
+		//make the session persist for 30 days
+		$saveHandler->setLifetime($seconds)->setOverrideLifetime(true);
+		//similarly,
+		//$saveHandler->setLifetime($seconds, true);
+		Zend_Session::setSaveHandler($saveHandler);
+		Zend_Session::start();
+		
 	}
-*/
+	*/
+
 	protected function _initView(){
         $view = new Zend_View();
         $view->doctype('XHTML1_STRICT');
