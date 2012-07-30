@@ -72,11 +72,14 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 						'resourceTypes' => array(array('path'=>'akcje/', 'namespace'=>'Akcja'))
 					));
 	}
-
+*/
+	
 	protected function _initControllers(){
+		//
 		$this->fxfrontController->registerPlugin(new FX_Controller_Auth());
 	}
 
+	/*
 	protected function _initRouters(){
 		$router = $this->fxfrontController->getRouter();
 		$router->removeDefaultRoutes();

@@ -1,96 +1,95 @@
-sdfgsdfgsdfgsdf<br>
-<?=$this->zmienna;
 
-echo "<br>";
+// <?=$this->zmienna;
+// echo "<br>";
 
-echo "guest view ", $this->acl->isAllowed('guest', null, 'view') ?
-"allowed" : "denied";
-// allowed
+// echo "guest view ", $this->acl->isAllowed('guest', null, 'view') ?
+// "allowed" : "denied";
+// // allowed
 
-echo "<br>";
+// echo "<br>";
 
-echo 'staff publish ', $this->acl->isAllowed('staff', null, 'publish') ?
-"allowed" : "denied";
-// denied
+// echo 'staff publish ', $this->acl->isAllowed('staff', null, 'publish') ?
+// "allowed" : "denied";
+// // denied
 
-echo "<br>";
+// echo "<br>";
 
-echo "staff revise ", $this->acl->isAllowed('staff', null, 'revise') ?
-"allowed" : "denied";
-// allowed
+// echo "staff revise ", $this->acl->isAllowed('staff', null, 'revise') ?
+// "allowed" : "denied";
+// // allowed
 
-echo "<br>";
+// echo "<br>";
 
-echo "editor view ", $this->acl->isAllowed('editor', null, 'view') ?
-"allowed" : "denied";
-// allowed because of inheritance from guest
+// echo "editor view ", $this->acl->isAllowed('editor', null, 'view') ?
+// "allowed" : "denied";
+// // allowed because of inheritance from guest
 
-echo "<br>";
+// echo "<br>";
 
-echo "editor update ", $this->acl->isAllowed('editor', null, 'update') ?
-"allowed" : "denied";
-// denied because no allow rule for 'update'
+// echo "editor update ", $this->acl->isAllowed('editor', null, 'update') ?
+// "allowed" : "denied";
+// // denied because no allow rule for 'update'
 
-echo "<br>";
+// echo "<br>";
 
-echo "administrator view ", $this->acl->isAllowed('administrator', null, 'view') ?
-"allowed" : "denied";
-// allowed because administrator is allowed all privileges
+// echo "administrator view ", $this->acl->isAllowed('administrator', null, 'view') ?
+// "allowed" : "denied";
+// // allowed because administrator is allowed all privileges
 
-echo "<br>";
+// echo "<br>";
 
-echo "administrator ", $this->acl->isAllowed('administrator') ?
-"allowed" : "denied";
-// allowed because administrator is allowed all privileges
+// echo "administrator ", $this->acl->isAllowed('administrator') ?
+// "allowed" : "denied";
+// // allowed because administrator is allowed all privileges
 
-echo "<br>";
+// echo "<br>";
 
-echo "administrator view ", $this->acl->isAllowed('administrator', null, 'update') ?
-"allowed" : "denied";
-// allowed because administrator is allowed all privileges
+// echo "administrator view ", $this->acl->isAllowed('administrator', null, 'update') ?
+// "allowed" : "denied";
+// // allowed because administrator is allowed all privileges
 
-echo "<br> Database: <BR>";
+// echo "<br> Database: <BR>";
 
-try
-{
-	$dbAdapter = Zend_Db_Table::getDefaultAdapter();
-} 
-catch (Zend_Db_Adapter_Exception $e) {
-	// perhaps a failed login credential, or perhaps the RDBMS is not running
-	echo 'Zend_Db_Table::getDefaultAdapter failed', ' ', $e->__toString();
-} 
-catch (Zend_Exception $e) {
-	// perhaps factory() failed to load the specified Adapter class
-	echo $e->__toString();	
-}
+// try
+// {
+// 	$dbAdapter = Zend_Db_Table::getDefaultAdapter();
+// } 
+// catch (Zend_Db_Adapter_Exception $e) {
+// 	// perhaps a failed login credential, or perhaps the RDBMS is not running
+// 	echo 'Zend_Db_Table::getDefaultAdapter failed', ' ', $e->__toString();
+// } 
+// catch (Zend_Exception $e) {
+// 	// perhaps factory() failed to load the specified Adapter class
+// 	echo $e->__toString();	
+// }
 
-$authAdapter = new Zend_Auth_Adapter_DbTable($dbAdapter);
+// $authAdapter = new Zend_Auth_Adapter_DbTable($dbAdapter);
 
-//$sql = $dbAdapter->getDbSelect();
+// //$sql = $dbAdapter->getDbSelect();
 
-$select = $dbAdapter->select()->from('test');
+// $select = $dbAdapter->select()->from('test');
 
-$sql = $dbAdapter->query($select);
+// $sql = $dbAdapter->query($select);
 
-$result = $sql->fetchAll();
+// $result = $sql->fetchAll();
 
-// $stmt = $select->query($select);
+// // $stmt = $select->query($select);
 
-// // $result is an array of objects
- var_dump($result);
+// // // $result is an array of objects
+//  var_dump($result);
  
- $defaultNamespace = new Zend_Session_Namespace('Default');
+//  $defaultNamespace = new Zend_Session_Namespace('Default');
  
- if (isset($defaultNamespace->numberOfPageRequests)) {
- 	// this will increment for each page load.
- 	$defaultNamespace->numberOfPageRequests++;
- } else {
- 	$defaultNamespace->numberOfPageRequests = 1; // first time
- }
+//  if (isset($defaultNamespace->numberOfPageRequests)) {
+//  	// this will increment for each page load.
+//  	$defaultNamespace->numberOfPageRequests++;
+//  } else {
+//  	$defaultNamespace->numberOfPageRequests = 1; // first time
+//  }
  
- echo "Page requests this session: ".$defaultNamespace->numberOfPageRequests."<br>";
+//  echo "Page requests this session: ".$defaultNamespace->numberOfPageRequests."<br>";
  
- print_r($defaultNamespace);
+//  print_r($defaultNamespace);
  
   
  
@@ -113,4 +112,8 @@ $result = $sql->fetchAll();
 //  Zend_Session::setSaveHandler($saveHandler);
 //  Zend_Session::start();
 
-?>
+//?>
+
+// <? // login/index.phtml ?>
+<!-- <h2>Please Login</h2> -->
+// <?= $this->form ?>
